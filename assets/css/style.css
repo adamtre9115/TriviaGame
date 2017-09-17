@@ -1,0 +1,34 @@
+body {
+    background-image: url(../images/narutoBg.jpg);
+    background-size: cover;
+}
+
+.jumbotron {
+    background-color: #5e7984;
+    opacity: .9;
+}
+
+.jumbotron h1,
+.jumbotron p {
+    color: #faf9c3;
+    text-align: center;
+}
+
+h1 {
+    font-size: 4.5em;
+}
+
+.jumbotron p {
+    font-size: 1.5em;
+}
+
+/* media queries */
+@media (max-width: 500px){
+    h1 {
+        font-size: 2em;
+    }
+
+    .jumbotron p {
+        font-size: 1em;
+    }
+}
