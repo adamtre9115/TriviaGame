@@ -64,4 +64,27 @@ $(document).ready(function () {
         $(".here").html("<p>There are " + time + " seconds remaining</p>");
     }
 
+    function qChange() {
+        var questionOutput = [];
+        questions.forEach(function (currentQuestion, questionNumber) {
+            var answers = [];
+            for (letter in currentQuestion.answers) {
+                answers.push(
+                    `<label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="question${questionNumber}" value="${letter}">
+                    ${letter} :
+                    ${currentQuestion.answers[letter]}
+                  </label>`
+                );
+            }
+            // add this question and its answers to the output
+            questionOutput.push(
+                `<div class="question"> ${currentQuestion.question} </div>
+        <div class="answers"> ${answers.join('')} </div>`
+            );
+            //   console.log(questionOutput);
+        })
+        $("#quiz").html(questionOutput);
+    }
+    qChange();
 })
