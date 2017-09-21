@@ -3,7 +3,9 @@ body {
     background-size: cover;
 }
 
-.jumbotron {
+
+.jumbotron,
+.gameBg {
     background-color: #5e7984;
     opacity: .9;
 }
@@ -21,6 +23,41 @@ h1 {
 .jumbotron p {
     font-size: 1.5em;
 }
+ 
+/*************
+game section
+ *************/
+
+#game {
+    margin: 0 auto;
+}
+
+#gamebtn {
+    background-color: #58445f;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    width: 30%;
+}
+
+#timeDisplay{
+    padding: 15px 0px;
+    text-align: center;
+}
+
+#quiz {
+    margin-top: 10px;
+    margin: 0 auto;
+    /* width: 70%; */
+}
+
+
+label,
+.question,
+p {
+    color: white;
+}
+
 
 /* media queries */
 @media (max-width: 500px){
@@ -28,6 +65,9 @@ h1 {
         font-size: 2em;
     }
 
+    .container {
+        width: 95%;
+    }
     .jumbotron p {
         font-size: 1em;
     }

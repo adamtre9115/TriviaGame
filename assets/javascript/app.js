@@ -54,14 +54,19 @@ var time = 30; //time allowed for each question
 var correct; // amount of correct responses
 var incorrect; // amount of incorrect responses
 
+
 $(document).ready(function () {
-    var countDown = setInterval(function () {
-        qTimer()
-    }, 1000);
+    // var countDown = setInterval(function () {
+    //     qTimer()
+    // }, 1000);
 
     function qTimer() {
         time--;
-        $(".here").html("<p>There are " + time + " seconds remaining</p>");
+        $("#timeDisplay").html("<p>There are " + time + " seconds remaining</p>");
+
+        if (time === 0) {
+            clearInterval(countDown);
+        }
     }
 
     function qChange() {
@@ -80,11 +85,23 @@ $(document).ready(function () {
             // add this question and its answers to the output
             questionOutput.push(
                 `<div class="question"> ${currentQuestion.question} </div>
-        <div class="answers"> ${answers.join('')} </div>`
+                <div class="answers"> ${answers.join('')} </div>`
             );
             //   console.log(questionOutput);
         })
         $("#quiz").html(questionOutput);
     }
-    qChange();
+    // qChange();
+    
+    $("#gamebtn").on("click", function(){
+        $("#game").removeClass("text-center");
+        $("#game").addClass("gameBg");
+        var countDown = setInterval(function () {
+            qTimer()
+        }, 1000);
+
+        qChange();
+    })
+    
+    
 })
