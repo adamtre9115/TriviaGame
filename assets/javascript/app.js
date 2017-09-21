@@ -50,58 +50,76 @@ var questions = [{
         correctAnswer: "d"
     },
 ]
-var time = 30; //time allowed for each question
+var time = 5; //time allowed for each question
 var correct; // amount of correct responses
 var incorrect; // amount of incorrect responses
-
+var countDown;
+var questionNum = 0;
+var answers = [];
 
 $(document).ready(function () {
-    // var countDown = setInterval(function () {
-    //     qTimer()
-    // }, 1000);
 
+    $("#gamebtn").on("click", function(){
+        $("#gamebtn").remove();
+        $("#game").removeClass("text-center");
+        $("#game").addClass("gameBg");
+        countDown = setInterval(qTimer, 1000);
+      
+        
+        // renderQuestion();
+        // qChange();
+    })
     function qTimer() {
         time--;
         $("#timeDisplay").html("<p>There are " + time + " seconds remaining</p>");
-
+        renderQuestion();
         if (time === 0) {
+            console.log("entered");
+            clearInterval(countDown);
+            
+        }
+    }
+    
+    // function qChange() {
+    //     var questionOutput = [];
+    //     questions.forEach(function (currentQuestion, questionNumber) {
+    //         var answers = [];
+    //         for (letter in currentQuestion.answers) {
+    //             answers.push(
+    //                 `<label class="form-check-label">
+    //                 <input type="radio" class="form-check-input" name="question${questionNumber}" value="${letter}">
+    //                 ${letter} :
+    //                 ${currentQuestion.answers[letter]}
+    //               </label>`
+    //             );
+    //         }
+    //         // add this question and its answers to the output
+    //         questionOutput.push(
+    //             `<div class="question"> ${currentQuestion.question} </div>
+    //             <div class="answers"> ${answers.join('')} </div>`
+    //         );
+    //         //   console.log(questionOutput);
+    //     })
+    //     $("#quiz").html(questionOutput);
+    // }
+    // qChange();
+    function renderQuestion (){
+        
+        $("#quiz").html(questions[questionNum].question);
+
+        if (time === 0){
+            questionNum++;
+            $("#quiz").empty();
+            $("#quiz").html(questions[questionNum].question);
+            time = 5;
+            qTimer();
+            
+        } else if (questionNum === questions.length && timer === 0){
             clearInterval(countDown);
         }
     }
-
-    function qChange() {
-        var questionOutput = [];
-        questions.forEach(function (currentQuestion, questionNumber) {
-            var answers = [];
-            for (letter in currentQuestion.answers) {
-                answers.push(
-                    `<label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="question${questionNumber}" value="${letter}">
-                    ${letter} :
-                    ${currentQuestion.answers[letter]}
-                  </label>`
-                );
-            }
-            // add this question and its answers to the output
-            questionOutput.push(
-                `<div class="question"> ${currentQuestion.question} </div>
-                <div class="answers"> ${answers.join('')} </div>`
-            );
-            //   console.log(questionOutput);
-        })
-        $("#quiz").html(questionOutput);
-    }
-    // qChange();
     
-    $("#gamebtn").on("click", function(){
-        $("#game").removeClass("text-center");
-        $("#game").addClass("gameBg");
-        var countDown = setInterval(function () {
-            qTimer()
-        }, 1000);
-
-        qChange();
-    })
+ 
     
     
 })
