@@ -1,8 +1,7 @@
 body {
     background-image: url(../images/narutoBg.jpg);
-    background-size: cover;
+    background-size: 1366px 768px;
 }
-
 
 .jumbotron,
 .gameBg {
@@ -23,7 +22,8 @@ h1 {
 .jumbotron p {
     font-size: 1.5em;
 }
- 
+
+
 /*************
 game section
  *************/
@@ -32,15 +32,18 @@ game section
     margin: 0 auto;
 }
 
-#gamebtn {
+button {
     background-color: #58445f;
     font-size: 20px;
     text-align: center;
     color: #fff;
+}
+
+#gamebtn {
     width: 30%;
 }
 
-#timeDisplay{
+#timeDisplay {
     padding: 15px 0px;
     text-align: center;
 }
@@ -48,9 +51,12 @@ game section
 #quiz {
     margin-top: 10px;
     margin: 0 auto;
-    /* width: 70%; */
+    color: #fff;
 }
 
+#submit {
+    margin: 10px;
+}
 
 label,
 .question,
@@ -58,17 +64,40 @@ p {
     color: white;
 }
 
+.question {
+    padding-top: 10px;
+}
+
+.hide {
+    display: none;
+}
+
 
 /* media queries */
-@media (max-width: 500px){
+
+@media (max-width: 500px) {
     h1 {
         font-size: 2em;
     }
-
+    #quiz {
+        padding: 0px 50px;
+    }
     .container {
         width: 95%;
     }
     .jumbotron p {
         font-size: 1em;
+    }
+}
+
+@media (min-width: 768px) {
+    #quiz {
+        padding: 0px 55px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #quiz {
+        padding: 0px 150px;
     }
 }
